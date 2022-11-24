@@ -1,4 +1,31 @@
 <!DOCTYPE html>
 <html>
-
+  <head>
+    <title>Korean Math Practice</title>
+    <link href="app.css" rel="stylesheet">
+  </head>
+  <body>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js'></script>
+    <script src="app.js"></script>
+    <div id="game">
+      <span class="left">Time remaining:</span>
+      <span class="score">Score: 0</span>
+      <div class="banner">
+        <div class="start">
+          <span class="problem"></span>
+          =
+          <input class="answer">
+        </div>
+        <div class="end">
+          <p class="correct">Score: 0</p>
+          <p>
+            <a href="game.html">Try again</a>
+            or
+            <a href="index.html">change settings</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+    <script>Problem.init({"num_type": "sino"})</script>
+  </body>
 </html>
