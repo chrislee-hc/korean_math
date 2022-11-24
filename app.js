@@ -11,6 +11,7 @@
       let time_rem = game.find(".left");
       let score = game.find(".score");
       let banner = game.find(".banner");
+      banner.find(".end").hide();
       let problem = game.find(".problem");
       let answer = game.find(".answer");
       let body = $("body");
@@ -131,10 +132,10 @@
       newProbSetup(); 
 
       let duration = options.duration || 120;
-      time_rem.text("Seconds left: " + duration);
+      time_rem.text("Time remaining: " + duration);
       let timer = setInterval(function() {
         var d = duration - Math.floor((Date.now() - start_time) / 1000);
-        time_rem.text("Seconds left: " + d);
+        time_rem.text("Time remaining: " + d);
 
         if (d <= 0) {
           answer.prop('disabled', true);
