@@ -28,18 +28,75 @@
       if (options["num_type"] == "sino") {
         ranges = [[[2, 100], [2, 100]], [[2, 12], [2, 100]]];
       }
+
+      let convert_to_korean = function convert_to_korean(num) {
+        if (num == 0) {
+          return "영";
+        }
+        digits = [
+          "error",
+          "일",
+          "이",
+          "삼",
+          "사",
+          "오",
+          "육",
+          "칠",
+          "팔",
+          "구"
+        ];
+        powers_of_ten = [
+          "",
+          "십",
+          "백",
+          "천",
+          "만"
+        ];
+
+        out = "";
+        for (let i = powers_of_ten.length - 1; i >= 0; i--) {
+          place = 10 ** i;
+          dig = Math.floor(num / place);
+          num -= place * dig;
+          if (dig == 0) {
+            continue;
+          }
+          if (dig == 1) {
+            if (i == 0) {
+              out += digits[dig];
+            }
+            else {
+              out += powers_of_ten[i];
+            }
+          }
+          else {
+            out += digits[dig] + powers_of_ten[i];
+          }
+        }
+        return out;
+      }
       
-      let probAddSub = function probAddSub(add) {
+      let probAddSub = function probAddSub(add, kor=true) {
         let n0 = randGen(ranges[0][0][0], ranges[0][0][1])
         let n1 = randGen(ranges[0][1][0], ranges[0][1][1])
         let sm = n0 + n1;
+        if (kor) {
+          n0 = convert_to_korean(n0);
+          n1 = convert_to_korean(n1);
+          sm = convert_to_korean(sm);
+        }
         return add ? [n0 + ' + ' + n1, sm] : [sm + ' \u2013 ' + n0, n1];
       };
 
-      let probMultDiv = function probMultDiv(mult) {
+      let probMultDiv = function probMultDiv(mult, kor=true) {
         let n0 = randGen(ranges[1][0][0], ranges[1][0][1])
         let n1 = randGen(ranges[1][1][0], ranges[1][1][1])
         let pd = n0 * n1;
+        if (kor) {
+          n0 = convert_to_korean(n0);
+          n1 = convert_to_korean(n1);
+          pd = convert_to_korean(pd);
+        }
         return mult ? [n0 + ' \xD7 ' + n1, pd] : [pd + ' \xF7 ' + n0, n1];
       };
 
