@@ -45,3 +45,13 @@ body {
   font-family: inherit;
   width: 200px;
 }
+#setup {
+  width: 500px;
+  padding: 20px;
+  margin: 0 auto;
+  background-color: #CCCCCC;
+  overflow: hidden;
+}
+#setup input[type="submit"] {
+  float: right;
+}

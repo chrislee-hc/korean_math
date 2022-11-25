@@ -2,11 +2,20 @@
 <html>
   <head>
     <title>Korean Math Practice</title>
-    <link hrf="app.css" rel="stylesheet">
+    <link href="app.css" rel="stylesheet">
   </head>
   <body>
-    <form action="./game.html">
-      <input type="submit" value="Start">
-    </form>
+    <div id="setup">
+      <h1>Korean Arithmetic Practice</h1>
+      <p>This page will help to practice basic arithmetic problems in Korean, simultaneously helping with mental math and fluency with Korean numbers. You will be given two numbers to solve as many problems as you can. Submit your answers in Korean.</p>
+      <form action="./game.html" method="GET">
+        <input type="radio" id="native" name="number_type" value="native">  
+        <label for="native">Native</label>
+        &emsp;&emsp;
+        <input type="radio" id="sino" name="number_type" value="sino">  
+        <label for="sino">Sino</label>
+        <input type="submit" value="Start">
+      </form>
+    </div>
   </body>
 </html>
